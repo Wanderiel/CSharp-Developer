@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace _10_DeepOOP_Part01.Persons.Staffs
 {
-    public class Manager : Person
+    public class Manager : Consultant
     {
-        private string _type = "Менеджер";
+        protected string Posotion = "Менеждер";
 
         public Manager(string surName, string firstName, string patronymic)
             : base(surName, firstName, patronymic)

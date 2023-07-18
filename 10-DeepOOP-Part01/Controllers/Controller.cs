@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace _10_DeepOOP_Part01.Controllers
 {
-    internal class Controller
+    public class Controller
     {
     }
 }

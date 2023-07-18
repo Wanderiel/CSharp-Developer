@@ -2,7 +2,7 @@
 
 namespace _10_DeepOOP_Part01.Controllers
 {
-    internal interface IController
+    public interface IController
     {
         void AddClient();
 

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace _10_DeepOOP_Part01.Persons.Clients
 {
-    internal class Client : Person
+    public class Client : Person
     {
         private readonly string _telephone;
         private readonly string _passport;
