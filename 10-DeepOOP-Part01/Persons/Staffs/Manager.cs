@@ -8,7 +8,7 @@ namespace _10_DeepOOP_Part01.Persons.Staffs
 {
     public class Manager : Consultant
     {
-        protected string Posotion = "Менеждер";
+        protected string Position = "Менеждер";
 
         public Manager(string surName, string firstName, string patronymic)
             : base(surName, firstName, patronymic)
