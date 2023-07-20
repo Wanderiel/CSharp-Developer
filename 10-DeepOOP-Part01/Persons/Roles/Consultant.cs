@@ -10,19 +10,37 @@ namespace _10_DeepOOP_Part01.Persons.Roles
 
         public void ChangeData(Entry entry)
         {
-            Console.Write("Введите номер телефона: ");
-            string telephone = Console.ReadLine();
+            const ConsoleKey CommandChangeTelephone = ConsoleKey.NumPad1;
+            const ConsoleKey CommandExit = ConsoleKey.Q;
 
-            if (string.IsNullOrEmpty(telephone))
-                return;
+            bool isWork = true;
 
-            entry.Client.ChangeTelephone(telephone);
-        }
+            while (isWork)
+            {
+                bool isChanged = false;
 
-        private void ChangeTelephone(Client client)
-        {
-            if (TryData("телефон", out string input))
-                client.ChangeTelephone(input);
+                Console.WriteLine($"{CommandChangeTelephone} - изменить данные ({TitleTelephone})");
+                Console.WriteLine($"{CommandExit} - назад");
+
+                if (Console.KeyAvailable)
+                {
+                    ConsoleKey key = Console.ReadKey(true).Key;
+
+                    switch (key)
+                    {
+                        case CommandChangeTelephone:
+                            isChanged = TryChangeData(entry.Client, TitleTelephone);
+                            break;
+
+                        case CommandExit:
+                            isWork = false;
+                            break;
+                    }
+                }
+
+                if (isChanged)
+                    entry.LogIn(new Log(DateTime.Now, TitleSurName, "изменение", Title));
+            }
         }
 
         public void ShowInfo(Entry entry)

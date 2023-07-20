@@ -17,6 +17,6 @@ namespace _10_DeepOOP_Part01.Databases
         public Log LastLog => _logs.LastOrDefault();
         public List<Log> AllLogs => new List<Log>(_logs);
 
-        public void Add(Log log) => _logs.Add(log);
+        public void LogIn(Log log) => _logs.Add(log);
     }
 }

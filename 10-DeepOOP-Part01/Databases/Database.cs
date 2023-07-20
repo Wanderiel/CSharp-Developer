@@ -1,28 +1,17 @@
-﻿using _10_DeepOOP_Part01.Persons.Clients;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace _10_DeepOOP_Part01.Databases
+﻿namespace _10_DeepOOP_Part01.Databases
 {
-    public class Database<T> where T : class
+    public class Database
     {
-        private List<T> _items = new List<T>();
-        private List<Log>
+        private List<Entry> _entrys = new List<Entry>();
 
-        public void Add(T item)
+        public void Add(Entry entry)
         {
-            if (item == null)
+            if (entry == null)
                 return;
 
-            _items.Add(item);
+            _entrys.Add(entry);
         }
 
-        public List<T> Get()
-        {
-            return new List<T>(_items);
-        }
+        public List<Entry> Get() => new List<Entry>(_entrys);
     }
 }

@@ -21,6 +21,8 @@ namespace _10_DeepOOP_Part01.Persons.Roles
 
             while (isWork)
             {
+                bool isChanged = false;
+
                 Console.WriteLine($"{CommandChangeSurName} - изменить фамилию");
                 Console.WriteLine($"{CommandChangeFirstName} - изменить имя");
                 Console.WriteLine($"{CommandChangePatronymic} - изменить отчество");
@@ -35,23 +37,23 @@ namespace _10_DeepOOP_Part01.Persons.Roles
                     switch (key)
                     {
                         case CommandChangeSurName:
-                            ChangeSurName(entry.Client);
+                            isChanged = TryChangeData(entry.Client, TitleSurName);
                             break;
 
                         case CommandChangeFirstName:
-                            ChangeFirstName(entry.Client);
+                            isChanged = TryChangeData(entry.Client, TitleFirstName);
                             break;
 
                         case CommandChangePatronymic:
-                            ChangePatronymic(entry.Client);
+                            isChanged = TryChangeData(entry.Client, TitlePatronymic);
                             break;
 
                         case CommandChangeTelephone:
-                            ChangeTelephone(entry.Client);
+                            isChanged = TryChangeData(entry.Client, TitleTelephone);
                             break;
 
                         case CommandChangePassport:
-                            ChangePassport(entry.Client);
+                            isChanged = TryChangeData(entry.Client, TitlePassport);
                             break;
 
                         case CommandExit:
@@ -59,6 +61,10 @@ namespace _10_DeepOOP_Part01.Persons.Roles
                             break;
                     }
                 }
+
+                if (isChanged)
+                    entry.LogIn(new Log(DateTime.Now, TitleSurName, "изменение", Title));
+
             }
         }
 
@@ -71,36 +77,6 @@ namespace _10_DeepOOP_Part01.Persons.Roles
             Console.WriteLine($"телефон: {client.Telephone}");
             Console.WriteLine($"паспорт: {client.Passport}");
             Console.WriteLine($"последние изменения: {log.Data}");
-        }
-
-        private void ChangeSurName(Client client)
-        {
-            if (TryData("фамилию", out string input))
-                client.ChangeSurName(input);
-        }
-
-        private void ChangeFirstName(Client client)
-        {
-            if (TryData("имя", out string input))
-                client.ChangeFirstName(input);
-        }
-
-        private void ChangePatronymic(Client client)
-        {
-            if (TryData("отчество", out string input))
-                client.ChangePatronymic(input);
-        }
-
-        private void ChangeTelephone(Client client)
-        {
-            if (TryData("телефон", out string input))
-                client.ChangeTelephone(input);
-        }
-
-        private void ChangePassport(Client client)
-        {
-            if (TryData("серию и номер паспорта", out string input))
-                client.ChangePassport(input);
         }
     }
 }
