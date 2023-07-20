@@ -10,6 +10,7 @@ namespace _10_DeepOOP_Part01.Databases
     public class Database<T> where T : class
     {
         private List<T> _items = new List<T>();
+        private List<Log>
 
         public void Add(T item)
         {

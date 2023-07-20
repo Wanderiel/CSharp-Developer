@@ -1,4 +1,5 @@
 ﻿using _10_DeepOOP_Part01.Databases;
+using _10_DeepOOP_Part01.Interfaces;
 using _10_DeepOOP_Part01.Persons.Clients;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace _10_DeepOOP_Part01.Controllers
 {
-    public class Controller : IController
+    public class Controller
     {
         private Database _databases;
 
@@ -22,15 +23,6 @@ namespace _10_DeepOOP_Part01.Controllers
             return true;
         }
 
-        public void AddClient()
-        {
-            
-        }
-
-        public void ShowInfo(Client client)
-        {
-            
-        }
 
         public void CreateClient()
         {
