@@ -1,51 +1,38 @@
 ﻿using _10_DeepOOP_Part01.Databases;
 using _10_DeepOOP_Part01.Interfaces;
-using _10_DeepOOP_Part01.Persons.Clients;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Text.Json;
 
 namespace _10_DeepOOP_Part01.Controllers
 {
     public class Controller
     {
-        private Database _databases;
+        private Database _database;
+        private readonly IRole _role;
+        private readonly string _path = @"Data\Database.json";
 
-        private bool TryGetNames(string input, out string[] names)
+        public Controller(IRole role)
         {
-            names = input.Trim().Split(' ');
-
-            if (names.Length != 3)
-                return false;
-
-            return true;
+            _role = role;
+            AttachDatabase();
         }
 
-
-        public void CreateClient()
+        public void SaveDatabase(List<Entry> entries)
         {
-            Console.Write("Введите ФИО клиента: ");
-            string userInput = Console.ReadLine();
-
-            if (TryGetNames(userInput, out string[] names) == false)
-            {
-                Console.WriteLine("Некорректный ввод");
-                Console.ReadKey();
-            }
-
-            Console.WriteLine("Введите номер телефона: ");
-            string telephone = Console.ReadLine();
-
-            Console.WriteLine("Введите серию и номер паспорта");
-            string passport = Console.ReadLine();
-
-            Client client = new Client(names[0], names[1], names[3], telephone, passport);
-
-            _databases.Add(client);
-            Console.WriteLine("Новый клиент успешно создан");
+            Stream stream = new FileStream(_path, FileMode.Create, FileAccess.Write);
+            JsonSerializer.Serialize(stream, entries);
+            stream.Close();
         }
 
+        private void AttachDatabase()
+        {
+            if (File.Exists(_path) == false)
+                _database = new Database();
+
+            Stream fileStream = new FileStream(_path, FileMode.Open, FileAccess.Read);
+            List<Entry> database = JsonSerializer.Deserialize<List<Entry>>(fileStream);
+            fileStream.Close();
+
+            _database.Attach(database);
+        }
     }
 }

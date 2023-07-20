@@ -7,10 +7,13 @@ namespace _10_DeepOOP_Part01.Databases
         private Client _client;
         private List<Log> _logs;
 
-        public Entry(Client client)
+        public Entry(Client client, Log log)
         {
             _client = client;
-            _logs = new List<Log>();
+            _logs = new List<Log>
+            {
+                log
+            };
         }
 
         public Client Client => _client;

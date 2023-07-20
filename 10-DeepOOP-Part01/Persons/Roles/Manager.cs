@@ -8,6 +8,30 @@ namespace _10_DeepOOP_Part01.Persons.Roles
     {
         public string Title => "Менеджер";
 
+        public Entry CreateClient()
+        {
+            if (TryData(TitleFirstName, out string surName) == false)
+                return null;
+
+            if (TryData(TitleFirstName, out string firstName) == false)
+                return null;
+
+            if (TryData(TitlePatronymic, out string patronymic) == false)
+                return null;
+
+            if (TryData(TitleTelephone, out string telephone) == false)
+                return null;
+
+            if (TryData(TitlePassport, out string passport) == false)
+                return null;
+
+            Client client = new Client(surName, firstName, patronymic, telephone, passport);
+            Log log = new Log(DateTime.Now, "все поля", "создание", Title);
+
+            return new Entry(client, log);
+        }
+
+
         public void ChangeData(Entry entry)
         {
             const ConsoleKey CommandChangeSurName = ConsoleKey.NumPad1;

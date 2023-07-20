@@ -12,7 +12,7 @@ namespace _10_DeepOOP_Part01.Persons.Roles
 
         protected bool TryData(string title, out string input)
         {
-            Console.Write($"Введите новые данные клиента ({title}): ");
+            Console.Write($"Введите данные клиента ({title}): ");
             input = Console.ReadLine();
 
             if (string.IsNullOrEmpty(input))
