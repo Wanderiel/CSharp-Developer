@@ -14,10 +14,28 @@
         public string Patronymic { get; private set; }
         public string FullName => $"{SurName} {FirstName} {Patronymic}";
 
-        public void ChangeSurName(string surName) => SurName = surName;
+        public void ChangeSurName(string surName)
+        {
+            if (string.IsNullOrEmpty(SurName))
+                return;
 
-        public void ChangeFirstName(string firstName) => FirstName = firstName;
+            SurName = surName;
+        }
 
-        public void ChangePatronymic(string patronymic) => Patronymic = patronymic;
+        public void ChangeFirstName(string firstName)
+        {
+            if (string.IsNullOrEmpty(FirstName))
+                return;
+
+            FirstName = firstName;
+        }
+
+        public void ChangePatronymic(string patronymic)
+        {
+            if (string.IsNullOrEmpty(patronymic))
+                return;
+
+            Patronymic = patronymic;
+        }
     }
 }

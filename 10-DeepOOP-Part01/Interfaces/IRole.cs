@@ -1,13 +1,11 @@
-﻿using _10_DeepOOP_Part01.Databases;
+﻿using _10_DeepOOP_Part01.Persons.Clients;
 
 namespace _10_DeepOOP_Part01.Interfaces
 {
     public interface IRole
     {
-        public string Title { get; }
+        string Title { get; }
 
-        void ChangeData(Entry entry);
-
-        void ShowInfo(Entry entry);
+        void Work();
     }
 }

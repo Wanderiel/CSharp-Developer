@@ -4,11 +4,64 @@ using _10_DeepOOP_Part01.Persons.Clients;
 
 namespace _10_DeepOOP_Part01.Persons.Roles
 {
-    internal class Consultant : BaseRole, IRole
+    public class Consultant : IRole
     {
-        public string Title => "Консультант";
+        protected const string TitleSurName = "Фамилия";
+        protected const string TitleFirstName = "Имя";
+        protected const string TitlePatronymic = "Отчество";
+        protected const string TitleTelephone = "Телефон";
+        protected const string TitlePassport = "Паспорт";
 
-        public void ChangeData(Entry entry)
+        public virtual string Title => "Консультант";
+
+        public void Work()
+        {
+            throw new NotImplementedException();
+        }
+
+        protected bool TryData(string title, out string input)
+        {
+            Console.Write($"Введите данные клиента ({title}): ");
+            input = Console.ReadLine();
+
+            if (string.IsNullOrEmpty(input))
+                return false;
+
+            return true;
+        }
+
+        protected bool TryChangeData(Client client, string titleOfChanges)
+        {
+            if (TryData(titleOfChanges, out string input) == false)
+                return false;
+
+            switch (titleOfChanges)
+            {
+                case TitleSurName:
+                    client.ChangeSurName(input);
+                    break;
+
+                case TitleFirstName:
+                    client.ChangeFirstName(input);
+                    break;
+
+                case TitlePatronymic:
+                    client.ChangePatronymic(input);
+                    break;
+
+                case TitleTelephone:
+                    client.ChangeTelephone(input);
+                    break;
+
+                case TitlePassport:
+                    client.ChangePassport(input);
+                    break;
+            }
+
+            return true;
+        }
+
+        protected virtual void ChangeData(Client client)
         {
             const ConsoleKey CommandChangeTelephone = ConsoleKey.NumPad1;
             const ConsoleKey CommandExit = ConsoleKey.Q;
@@ -29,7 +82,7 @@ namespace _10_DeepOOP_Part01.Persons.Roles
                     switch (key)
                     {
                         case CommandChangeTelephone:
-                            isChanged = TryChangeData(entry.Client, TitleTelephone);
+                            isChanged = TryChangeData(client, TitleTelephone);
                             break;
 
                         case CommandExit:
@@ -38,21 +91,20 @@ namespace _10_DeepOOP_Part01.Persons.Roles
                     }
                 }
 
-                if (isChanged)
-                    entry.LogIn(new Log(DateTime.Now, TitleSurName, "изменение", Title));
+                //if (isChanged)
+                //    entry.LogIn(new Log(DateTime.Now, TitleSurName, "изменение", Title));
             }
         }
 
-        public void ShowInfo(Entry entry)
+        protected virtual void ShowInfo(Client client)
         {
-            Client client = entry.Client;
             string passport = new string('*', client.Passport.Length);
-            Log log = entry.LastLog;
+            //Log log = entry.LastLog;
 
             Console.WriteLine($"ФИО: {client.FullName}");
             Console.WriteLine($"телефон: {client.Telephone}");
             Console.WriteLine($"паспорт: {passport}");
-            Console.WriteLine($"последние изменения: {log.Data}");
+            //Console.WriteLine($"последние изменения: {log.Data}");
         }
     }
 }

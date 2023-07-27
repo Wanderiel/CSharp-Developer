@@ -1,25 +1,44 @@
-﻿namespace _10_DeepOOP_Part01.Databases
+﻿using _10_DeepOOP_Part01.Persons.Clients;
+
+namespace _10_DeepOOP_Part01.Databases
 {
     public class Database
     {
-        private List<Entry> _entries = new List<Entry>();
+        private List<Client> _clients = new();
 
-        public void Add(Entry entry)
+        public void Add(Client client)
         {
-            if (entry == null)
+            if (client == null)
                 return;
 
-            _entries.Add(entry);
+            _clients.Add(client);
         }
 
-        public List<Entry> Get() => new List<Entry>(_entries);
-
-        public void Attach(List<Entry>? database)
+        public void Attach(List<Client> database)
         {
             if (database == null)
                 return;
 
-            _entries = new List<Entry>(database);
+            _clients = new(database);
         }
+
+        public Client Get(int id)
+        {
+            if (id < 0)
+                return null;
+
+            if (id > _clients.Last().Id)
+                return null;
+
+            foreach (Client client in _clients)
+            {
+                if (id == client.Id)
+                    return client;
+            }
+
+            return null;
+        }
+
+        public List<Client> GetAll() => new(_clients);
     }
 }
