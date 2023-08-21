@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33829.357
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "10-DeepOOP-Part01", "10-DeepOOP-Part01\10-DeepOOP-Part01.csproj", "{8E249AAC-3B6C-453A-A58A-B57A321B358F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSh10_DeepOOP_Part01", "CSh10_DeepOOP_Part01\CSh10_DeepOOP_Part01.csproj", "{A9A44705-F9EB-435A-AC96-1C182A34EF1D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{8E249AAC-3B6C-453A-A58A-B57A321B358F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8E249AAC-3B6C-453A-A58A-B57A321B358F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8E249AAC-3B6C-453A-A58A-B57A321B358F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8E249AAC-3B6C-453A-A58A-B57A321B358F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A9A44705-F9EB-435A-AC96-1C182A34EF1D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A9A44705-F9EB-435A-AC96-1C182A34EF1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A9A44705-F9EB-435A-AC96-1C182A34EF1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A9A44705-F9EB-435A-AC96-1C182A34EF1D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,6 +1,6 @@
-﻿using _10_DeepOOP_Part01.Persons.Clients;
+﻿using CSh10_DeepOOP_Part01.Persons.Clients;
 
-namespace _10_DeepOOP_Part01.Databases
+namespace CSh10_DeepOOP_Part01.Databases
 {
     public class Database
     {

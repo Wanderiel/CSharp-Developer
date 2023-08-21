@@ -1,4 +1,4 @@
-﻿namespace _10_DeepOOP_Part01.Interfaces
+﻿namespace CSh10_DeepOOP_Part01.Interfaces
 {
     public interface IRole
     {
